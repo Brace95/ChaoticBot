@@ -1,0 +1,17 @@
+{
+  "name": "chaoticbot",
+  "version": "0.0.1",
+  "description": "Chaotic Bot that controls the server.",
+  "main": "index.js",
+  "author": "Brandon Stenhouse",
+  "license": "ISC",
+  "keywords": [
+    "Chaotic",
+    "Bot",
+    "Discord"
+  ],
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0"
+  }
+}
