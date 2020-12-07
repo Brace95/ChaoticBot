@@ -12,6 +12,6 @@ All commands are ran by
 ```
 - [x] **hello** : A simple hello command to check if the bot is alive.
 - [x] **hf** : Shows who is the famous one is.
-- [ ] **listen *<channel name>*** : Adds a channel for the bot to listen to.
-- [ ] **mc *<action>* *<instance>*** : Start/Stop/Restart the MineCraft Server.
-- [ ] **mcc *<command>*** : Issue a Minecraft console command.
+- [ ] **listen *\[channel name\]*** : Adds a channel for the bot to listen to.
+- [ ] **mc *\[action\]* *\[instance\]*** : Start/Stop/Restart the MineCraft Server.
+- [ ] **mcc *\[command\]*** : Issue a Minecraft console command.
