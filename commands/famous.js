@@ -5,8 +5,7 @@ module.exports = {
     args: false,
     usage: "",
     guildOnly: false,
-    execute(msg, users) {
+    execute(msg, args) {
         msg.channel.send("Hidden Famous!");
     },
-
 }
