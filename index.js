@@ -19,53 +19,60 @@ for(const F of CF) {
 
 // Check if ready
 DC.on('ready', () => {
+    console.debug(`BOTID: ${DC.user.id}`);
     console.log("ChaoticBot is authenticated and listening");
+    console.log("------------------------");
 });
 
 DC.on('message', msg => {
 
-    if ( msg.mentions.users.first() != null ) {
+    // Ignore invalid request
+    if (msg.mentions.users.first() == null) return;
+    if (msg.mentions.users.first().id != DC.user.id) return;
+    if (!(msg.content.startsWith(`<@!${DC.user.id}>`))) return;
 
-        if ( msg.mentions.users.first().id === DC.user.id ) {
-            // Debug Message
-            console.log(`MSG: ${msg.content}`);
+     // Debug message
+     console.debug(`MSG: ${msg.content}`);
 
-            // Split into array of items
-            args = msg.content.trim().split(/ +/);
+    // Split into array of items
+    args = msg.content.trim().split(/ +/);
 
-            // Remove the mention
-            args.shift();
+    // Remove the mention
+    args.shift();
 
-            // Get command
-            cmd = args.shift().toLowerCase();
+    // Debug message
+    console.debug(`ARGS: ${args}`);
 
-            // Check if commands exists
-            const C = DC.commands.get(cmd) || DC.commands.find(cm => cm.aliases && cm.aliases.includes(cmd));
-            if (!C) return;
+    // Check if command given
+    if (args.length < 1) return;
 
-            // Check if args are needed and supplied
-            if (C.args && !args.length) {
-                let reply = `You didn't provide any arguments, ${msg.author}!`;
-                if(C.usage)
-                    reply += `\nThe proper usage would be: '@ChaoticBot ${C.name} ${C.usage}'`;
-                
-                return msg.channel.send(reply);
-            }
+    // Get command
+    cmd = args.shift().toLowerCase();
 
-            // Check if command is a guildOnly
-            if (C.guildOnly && msg.channel.typr === 'dm') {
-                return msg.reply("I can't execute that command inside DMs!");
-            }
+    // Check if command exists
+    const C = DC.commands.get(cmd) || DC.commands.find(cm => cm.aliases && cm.aliases.includes(cmd));
+    console.debug(`COMMAND: ${C}`);
+    if (!C) return;
 
-            try{
-               C.execute(msg, args);
-            } catch (err) {
-                console.error(err);
-                msg.reply("An error occurred while trying to execute that command!")
-            }
+    // Check if args are needed and supplied
+    if (C.args && !args.length) {
+        let reply = `You didn't provide any arguments, ${msg.author}!`;
+        if(C.usage)
+            reply += `\nThe proper usage would be: '@ChaoticBot ${C.name} ${C.usage}'`;
+        
+        return msg.channel.send(reply);
+    }
 
-        }
+    // Check if command is a guildOnly
+    if (C.guildOnly && msg.channel.typr === 'dm') {
+        return msg.reply("I can't execute that command inside DMs!");
+    }
 
+    try{
+        C.execute(msg, args);
+    } catch (err) {
+        console.error(err);
+        msg.reply("An error occurred while trying to execute that command!")
     }
 
 });
