@@ -20,4 +20,4 @@ All commands are ran by
 - [ ] **listen *\[channel name\]*** : Adds a channel for the bot to listen to.
 - [ ] **mc *\[action\]* *\[instance\]*** : Start/Stop/Restart the MineCraft Server.
 - [ ] **mcc *\[command\]*** : Issue a Minecraft console command.
-- [ ] **hff** : Follows hidden and plays the hidden famous song
+- [ ] **hff** : Follows hidden and plays the hidden famous song.
