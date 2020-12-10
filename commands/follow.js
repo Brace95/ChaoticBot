@@ -29,7 +29,7 @@ async function joinPlayLeave (channel, audio) {
 
     dis.on('finish', () => {
         console.debug(`${audio} has finished playing`);
-        con.leave();
+        con.disconnect();
     });
 
     dis.on('error', console.error);
