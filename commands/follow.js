@@ -11,7 +11,7 @@ module.exports = {
     execute(msg, args) {
         console.log("Testing");
         if (msg.member.voice.channel) {
-            joinPlayLeave(msg.member.voice.channel, "./audio/hidden-famous.m4a");
+            joinPlayLeave(msg.member.voice.channel, "./audio/hidden-famous.mp3");
         }
         
     },
