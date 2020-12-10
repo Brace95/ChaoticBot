@@ -10,8 +10,8 @@ module.exports = {
     guildOnly: false,
     execute(msg, args) {
         console.log("Testing");
-        if (message.member.voice.channel) {
-            joinPlayLeave(message.member.voice.channel, "./audio/hidden-famous.m4a");
+        if (msg.member.voice.channel) {
+            joinPlayLeave(msg.member.voice.channel, "./audio/hidden-famous.m4a");
         }
         
     },
