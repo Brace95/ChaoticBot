@@ -1,6 +1,3 @@
-const famous = require("./famous");
-
-
 module.exports = {
     name: "follow",
     aliases: ['hfs'],
@@ -12,6 +9,8 @@ module.exports = {
         console.log("Testing");
         if (msg.member.voice.channel) {
             joinPlayLeave(msg.member.voice.channel, "./audio/hidden-famous.mp3");
+        } else {
+            msg.channel.send("Hidden is not in a voice channel :HiddenWAT:");
         }
         
     },
