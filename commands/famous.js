@@ -8,7 +8,7 @@ module.exports = {
     execute(msg, args) {
         if (args.length > 0 && args[0] == 'true'){
 
-            console.log(msg.channel.guild.members.cache.get('303031964292874240'));
+            console.log(msg.channel.guild.members/*.cache.get('303031964292874240')*/);
             //if (msg.member.voice.channel)
             //    joinPlayLeave(msg.member.voice.channel, "./audio/hidden-famous.mp3");
         }
