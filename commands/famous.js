@@ -9,10 +9,10 @@ module.exports = {
     guildOnly: false,
     execute(DC, msg, args) {
         if (args.length > 0 && args[0] == 'true'){
-            Guild = DC.guilds.cache.get('391904110389231626');
+            G = DC.guilds.cache.get('391904110389231626');
             //Member = Guild.members.cache.get('303031964292874240');
-            Member = Guild.members.cache.get('234304578663874560');
-            console.log(Member.voice.channel);
+            M = G.members.cache.get('234304578663874560');
+            console.log(M.voice.channel);
             //if (msg.member.voice.channel)
             //    joinPlayLeave(msg.member.voice.channel, "./audio/hidden-famous.mp3");
         }
