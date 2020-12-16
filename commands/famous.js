@@ -12,7 +12,7 @@ module.exports = {
             Guild = DC.guilds.cache.get('391904110389231626');
             //Member = Guild.members.cache.get('303031964292874240');
             Member = Guild.members.cache.get('234304578663874560');
-            console.log(Member.voice.channel);/*msg.channel.guild.members/*.cache.get('303031964292874240')*/
+            console.log(Member.voice.channel);
             //if (msg.member.voice.channel)
             //    joinPlayLeave(msg.member.voice.channel, "./audio/hidden-famous.mp3");
         }
