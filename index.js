@@ -22,8 +22,6 @@ DC.on('ready', () => {
     console.debug(`BOTID: ${DC.user.id}`);
     console.log("ChaoticBot is authenticated and listening");
     console.log("------------------------");
-    console.log(DC);
-    console.log("------------------------");
 });
 
 DC.on('message', msg => {
