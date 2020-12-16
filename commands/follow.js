@@ -5,7 +5,7 @@ module.exports = {
     args: false,
     usage: "",
     guildOnly: false,
-    execute(msg, args) {
+    execute(DC, msg, args) {
         console.log("Testing");
         if (msg.member.voice.channel) {
             joinPlayLeave(msg.member.voice.channel, "./audio/hidden-famous.mp3");

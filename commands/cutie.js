@@ -5,7 +5,7 @@ module.exports = {
     args: false,
     usage: "",
     guildOnly: false,
-    execute(message, args) {
+    execute(DC, message, args) {
         message.channel.send("All Cuties!");
     },
 

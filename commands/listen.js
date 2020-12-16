@@ -5,7 +5,7 @@ module.exports = {
     args: true,
     usage: "<channel name>",
     guildOnly: true,
-    execute(message, args) {
+    execute(DC, message, args) {
         let ch = args.shift().toLowerCase();
         let channel = ch.match(/<#(\d+)>/)
         if (channel) {

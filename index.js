@@ -69,7 +69,7 @@ DC.on('message', msg => {
     }
 
     try{
-        C.execute(msg, args);
+        C.execute(DC, msg, args);
     } catch (err) {
         console.error(err);
         msg.reply("An error occurred while trying to execute that command!")
