@@ -1,3 +1,5 @@
+const { Guild } = require("discord.js");
+
 module.exports = {
     name: "famous",
     aliases: ['f', 'hf'],
@@ -7,8 +9,10 @@ module.exports = {
     guildOnly: false,
     execute(DC, msg, args) {
         if (args.length > 0 && args[0] == 'true'){
-
-            console.log(DC.users.cache);/*msg.channel.guild.members/*.cache.get('303031964292874240')*/
+            Guild = DC.guilds.cache.get('391904110389231626');
+            //Member = Guild.members.cache.get('303031964292874240');
+            Member = Guild.members.cache.get('234304578663874560');
+            console.log(Member.voice.channel);/*msg.channel.guild.members/*.cache.get('303031964292874240')*/
             //if (msg.member.voice.channel)
             //    joinPlayLeave(msg.member.voice.channel, "./audio/hidden-famous.mp3");
         }
