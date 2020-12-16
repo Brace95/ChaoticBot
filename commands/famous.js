@@ -13,16 +13,13 @@ module.exports = {
         msg.channel.send("Hidden Famous!");
 
         // Voice in hiddens voice channel
-        if (args.length > 0 && args[0] == 'true'){
-            G = DC.guilds.cache.get('391904110389231626');
-            //M = G.members.cache.get('303031964292874240');
-            M = G.members.cache.get('234304578663874560');
-            
-            console.debug(`VOICE: ${M.voice.channel}`);
-            if(M.voice.channel) {
-                joinPlayLeave(M.voice.channel, "./audio/hidden-famous.mp3");
-            }
-            
+        G = DC.guilds.cache.get('391904110389231626');
+        M = G.members.cache.get('303031964292874240');
+        //M = G.members.cache.get('234304578663874560');
+
+        console.debug(`VOICE: ${M.voice.channel}`);
+        if(M.voice.channel) {
+            joinPlayLeave(M.voice.channel, "./audio/hidden-famous.mp3");
         }
         
     },
