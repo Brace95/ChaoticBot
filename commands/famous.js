@@ -31,7 +31,7 @@ module.exports = {
             play = voices[Math.floor(Math.random()*voices.length)];
             console.log(play);
 
-            joinPlayLeave(M.voice.channel, "./audio/hidden-famous.mp3");
+            joinPlayLeave(M.voice.channel, "./audio/hf/hidden-famous.mp3");
         }
         
     },
