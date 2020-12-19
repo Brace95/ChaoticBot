@@ -22,7 +22,7 @@ module.exports = {
 
             // Get all voices 
             const FS = require('fs');
-            FS.readdirSync(testFolder).forEach(file => {
+            FS.readdirSync('./audio/hf/').forEach(file => {
                 console.log(file);
                 voices.push(file);
             });
