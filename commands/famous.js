@@ -1,5 +1,3 @@
-const { Guild } = require("discord.js");
-
 module.exports = {
     name: "famous",
     aliases: ['f', 'hf'],
@@ -19,6 +17,20 @@ module.exports = {
 
         console.debug(`VOICE: ${M.voice.channel}`);
         if(M.voice.channel) {
+
+            voices = [];
+
+            // Get all voices 
+            const FS = require('fs');
+            FS.readdirSync(testFolder).forEach(file => {
+                console.log(file);
+                voices.push(file);
+            });
+
+            // Grab a random voice
+            play = voices[Math.floor(Math.random()*voices.length)];
+            console.log(play);
+
             joinPlayLeave(M.voice.channel, "./audio/hidden-famous.mp3");
         }
         
