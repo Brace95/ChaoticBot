@@ -16,8 +16,7 @@ module.exports = {
         M = G.members.cache.get('303031964292874240');
         //M = G.members.cache.get('234304578663874560');
 
-        console.debug(`VOICE: ${M.voice.channel}`);
-        if(M.voice.channel) {
+        if(M && M.voice.channel) {
 
             voices = [];
 

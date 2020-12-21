@@ -5,6 +5,7 @@ module.exports = {
     args: false,
     usage: "",
     guildOnly: false,
+    cooldown: 0,
     execute(DC, message, args) {
         message.reply("Hello Friend!!");
     },

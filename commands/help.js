@@ -5,6 +5,7 @@ module.exports = {
     args: false,
     usage: "[command name]",
     guildOnly: false,
+    cooldown: 0,
     execute (DC, msg, args) {
 
         const data = [];

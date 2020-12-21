@@ -32,8 +32,8 @@ DC.on('message', msg => {
     if (msg.mentions.users.first().id != DC.user.id) return;
     if (!(msg.content.startsWith(`<@!${DC.user.id}>`))) return;
 
-     // Debug message
-     console.debug(`MSG: ${msg.content}`);
+    // Debug message
+    console.debug(`MSG: ${msg.content}`);
 
     // Split into array of items
     args = msg.content.trim().split(/ +/);
@@ -70,27 +70,32 @@ DC.on('message', msg => {
     }
 
     // Check if command is on cooldown
-    if (cooldowns.has(C.name)) {
-        cooldowns.set(C.name, new Discord.Collection());
+    if (!cooldowns.has(C.name)) {
+		cooldowns.set(C.name, new D.Collection());
     }
-
+    
     const now = Date.now();
-    const timestamps = cooldowns.get(C.name);
-    const cooldownAmount = (C.cooldown || 3) * 1000;
+	const timestamps = cooldowns.get(C.name);
+	const cooldownAmount = (C.cooldown || 3) * 1000;
 
-    if (timestamps.has(msg.author.id)) {
-        const expirationTime = timestamps.get(msg.author.id) + cooldownAmount;
-        if (now < expirationTime) {
-            const timeLeft = (expirationTime - now) / 1000;
-            return msg.reply(`please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${C.name}\` command.`);
-        }
-    }
+	if (timestamps.has(msg.author.id)) {
+		const expirationTime = timestamps.get(msg.author.id) + cooldownAmount;
 
+		if (now < expirationTime) {
+			const timeLeft = (expirationTime - now) / 1000;
+			return msg.reply(`please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${C.name}\` command.`);
+		}
+	}
+
+	timestamps.set(msg.author.id, now);
+	setTimeout(() => timestamps.delete(msg.author.id), cooldownAmount);
+
+    // Action command
     try{
         C.execute(DC, msg, args);
     } catch (err) {
         console.error(err);
-        msg.reply("An error occurred while trying to execute that command!")
+        msg.reply(":HiddenWAT: An error occurred while trying to execute that command!")
     }
 
 });
