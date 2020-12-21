@@ -9,6 +9,7 @@ const DC = new D.Client();
 // Setup Discord Connection
 DC.login(process.env.DISCORD_TOKEN);
 DC.commands = new D.Collection();
+const cooldowns = new Discord.Collection();
 
 // Load Commands
 const CF = FS.readdirSync('./commands').filter(file => file.endsWith('.js'));
@@ -66,6 +67,23 @@ DC.on('message', msg => {
     // Check if command is a guildOnly
     if (C.guildOnly && msg.channel.typr === 'dm') {
         return msg.reply("I can't execute that command inside DMs!");
+    }
+
+    // Check if command is on cooldown
+    if (cooldowns.has(C.name)) {
+        cooldowns.set(C.name, new Discord.Collection());
+    }
+
+    const now = Date.now();
+    const timestamps = cooldowns.get(C.name);
+    const cooldownAmount = (C.cooldown || 3) * 1000;
+
+    if (timestamps.has(msg.author.id)) {
+        const expirationTime = timestamps.get(msg.author.id) + cooldownAmount;
+        if (now < expirationTime) {
+            const timeLeft = (expirationTime - now) / 1000;
+            return msg.reply(`please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${C.name}\` command.`);
+        }
     }
 
     try{

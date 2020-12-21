@@ -5,6 +5,7 @@ module.exports = {
     args: false,
     usage: "",
     guildOnly: false,
+    cooldown: 5,
     execute(DC, msg, args) {
 
         // Send the message
