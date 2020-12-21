@@ -9,7 +9,7 @@ const DC = new D.Client();
 // Setup Discord Connection
 DC.login(process.env.DISCORD_TOKEN);
 DC.commands = new D.Collection();
-const cooldowns = new Discord.Collection();
+const cooldowns = new D.Collection();
 
 // Load Commands
 const CF = FS.readdirSync('./commands').filter(file => file.endsWith('.js'));
